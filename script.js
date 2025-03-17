@@ -95,16 +95,14 @@ function displayCart() {
 
 // Toast notification
 function showToast(message) {
-    const toast = document.getElementById('toast');
-    const toastMessage = document.getElementById('toast-message');
+    const toast = document.createElement('div');
+    toast.className = 'toast';
+    toast.textContent = message;
+    document.body.appendChild(toast);
     
-    if (toast && toastMessage) {
-        toastMessage.textContent = message;
-        toast.classList.add('show');
-        setTimeout(() => {
-            toast.classList.remove('show');
-        }, 3000);
-    }
+    setTimeout(() => {
+        toast.remove();
+    }, 3000);
 }
 
 // Initialize on page load
@@ -114,3 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
         displayCart();
     }
 });
+
+function showReview(){
+    document.querySelector("")
+}
