@@ -12,15 +12,16 @@
     <header>
         <div class="navbar">
             <img src="images/apple-touch-icon.png" alt="Dog" class="logo"> 
-            <nav>
+            <div class="mobile-menu">
+                <i class="fas fa-bars" id="menu-toggle"></i>
+            </div>
+            <nav id="navigation">
                 <ul>
-                    <li><a  href="index.html">Home</a></li>
+                    <li><a href="index.html">Home</a></li>
                     <li><a href="About.html">About</a></li>
-                    <li><a href="sproduct.html" >Products</a></li>
+                    <li><a href="sproduct.html">Products</a></li>
                     <li><a href="shop.html" class="active">Shop</a></li>
                     <li><a href="Cart.html"><i class="far fa-shopping-bag"></i><span class="cart-count">0</span></a></li>
-                    
-                    
                 </ul>
             </nav>
         </div>
@@ -222,7 +223,9 @@
 
 
 
-
+<div id="toast" class="toast" style="display: none;">
+    <p id="toast-message"></p>
+</div>
 
 
 
@@ -301,7 +304,39 @@
         <p>(C) 2023-2024 TALISMO TECHNOLOGIES CO., LTD.</p>
     </div>
     </footer>
-    
+    <script>
+        function showToast(message) {
+    const toast = document.getElementById('toast');
+    const toastMessage = document.getElementById('toast-message');
+
+    toastMessage.textContent = message;
+    toast.classList.add('show');
+    toast.style.display = 'block';
+
+    // Hide the toast after 3 seconds
+    setTimeout(() => {
+        toast.classList.remove('show');
+        toast.style.display = 'none';
+    }, 3000);
+}
+
+// Example usage
+showToast('This is a popup notification!');
+
+// Add this before your existing scripts
+document.getElementById('menu-toggle').addEventListener('click', function() {
+    document.getElementById('navigation').classList.toggle('active');
+});
+
+// Close menu when clicking outside
+document.addEventListener('click', function(e) {
+    const nav = document.getElementById('navigation');
+    const toggle = document.getElementById('menu-toggle');
+    if (!nav.contains(e.target) && !toggle.contains(e.target) && nav.classList.contains('active')) {
+        nav.classList.remove('active');
+    }
+});
+    </script>
     
     <script src="cart.js"></script>
     
