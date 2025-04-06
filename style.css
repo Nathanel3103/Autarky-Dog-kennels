@@ -687,85 +687,175 @@ select {
   }
 }
 
- /*--- Small Banners ---*/
+/*-------Banner Boxes--------*/
 #sm-banner {
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: space-between;
-  gap: 20px; /* Adds spacing between banners */
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding: 40px 80px;
 }
 
 .banner-box {
-  width: 30%;
-  height: 320px;
-  background-size: cover;
-  background-position: center;
-  color: white;
-  padding: 25px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  position: relative;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-  transition: transform 0.3s ease;
+    position: relative;
+    min-width: 300px;
+    height: 500px;
+    flex: 1;
+    background-size: cover;
+    background-position: center;
+    padding: 30px;
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    transition: transform 0.3s ease;
 }
 
-/* Overlay Effect */
 .banner-box::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.4);
-  z-index: 1;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.1) 0%,
+        rgba(0, 0, 0, 0.5) 50%,
+        rgba(0, 0, 0, 0.8) 100%
+    );
+    z-index: 1;
 }
 
-.banner-box:hover {
-  transform: scale(1.03);
-}
-
-/* Text Styles */
-.banner-box h4, .banner-box h2, .banner-box span {
-  position: relative;
-  z-index: 2;
+.banner-box h4,
+.banner-box h2,
+.banner-box span {
+    position: relative;
+    z-index: 2;
+    color: #FFD700;
+    margin: 8px 0;
 }
 
 .banner-box h4 {
-  font-size: 20px;
-  margin-bottom: 8px;
-  color: #ffdd57;
-  text-transform: uppercase;
+    font-size: 22px;
+    font-weight: 600;
+    text-transform: uppercase;
 }
 
 .banner-box h2 {
-  font-size: 28px;
-  margin-bottom: 12px;
-  line-height: 1.2;
+    font-size: 32px;
+    font-weight: 800;
+    color: white;
+    line-height: 1.2;
+    margin: 15px 0;
 }
 
 .banner-box span {
-  font-size: 16px;
-  margin-bottom: 18px;
-  color: #f1f1f1;
+    font-size: 18px;
+    color: white;
+    margin-bottom: 25px;
 }
 
-/* Button Styling */
 .banner-box .button {
-  background-color: rgba(255, 255, 255, 0.85);
-  color: #041e42;
-  border: none;
-  padding: 8px 18px;
-  font-size: 16px;
-  cursor: pointer;
-  border-radius: 6px;
-  width: 45%;
+    position: relative;
+    z-index: 2;
+    background: rgba(255, 255, 255, 0.9);
+    color: #000;
+    border: none;
+    padding: 12px 30px;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 5px;
+    text-transform: uppercase;
+    width: auto;
+    display: inline-block;
 }
- /* Add these styles to your existing CSS */
- .toast {
+
+.banner-box .button:hover {
+    background: #2a9d8f;
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    #sm-banner {
+        padding: 30px 40px;
+    }
+    
+    .banner-box {
+        min-width: 280px;
+        height: 450px;
+    }
+}
+
+@media (max-width: 992px) {
+    #sm-banner {
+        padding: 20px 30px;
+    }
+    
+    .banner-box {
+        min-width: 250px;
+        height: 400px;
+    }
+    
+    .banner-box h2 {
+        font-size: 28px;
+    }
+}
+
+@media (max-width: 768px) {
+    #sm-banner {
+        padding: 15px;
+    }
+    
+    .banner-box {
+        min-width: 100%;
+        height: 350px;
+    }
+    
+    .banner-box h4 {
+        font-size: 20px;
+    }
+    
+    .banner-box h2 {
+        font-size: 24px;
+    }
+    
+    .banner-box span {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 576px) {
+    .banner-box {
+        height: 300px;
+        padding: 20px;
+    }
+    
+    .banner-box h4 {
+        font-size: 18px;
+    }
+    
+    .banner-box h2 {
+        font-size: 22px;
+    }
+    
+    .banner-box span {
+        font-size: 14px;
+    }
+    
+    .banner-box .button {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+}
+
+/* Add these styles to your existing CSS */
+.toast {
   position: fixed;
   top: 20px;
   right: 20px;
@@ -950,6 +1040,162 @@ footer .copyright{
   footer .col {
     align-items: center;
     margin-bottom: 30px;
+  }
+}
+
+/* Enhanced Responsive Design */
+@media (max-width: 1200px) {
+  .intro {
+    width: 95%;
+    padding: 30px;
+  }
+  
+  #product1 .pro {
+    width: 30%;
+  }
+}
+
+@media (max-width: 992px) {
+  .intro {
+    flex-direction: column;
+    text-align: center;
+    padding: 25px;
+  }
+
+  #img-intro {
+    width: 70%;
+    margin-top: 20px;
+  }
+
+  #product1 .pro {
+    width: 45%;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+  }
+  
+  nav {
+    width: 100%;
+    margin-top: 15px;
+  }
+  
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  
+  nav li {
+    margin: 10px 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  .intro {
+    margin: 30px auto;
+    padding: 20px;
+  }
+
+  #img-intro {
+    width: 90%;
+  }
+
+  .intro h1 {
+    font-size: 28px;
+  }
+
+  .intro p {
+    font-size: 16px;
+    max-width: 100%;
+  }
+
+  .button {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  #product1 .pro {
+    width: 100%;
+    max-width: 350px;
+  }
+
+  #prodetails {
+    flex-direction: column;
+  }
+
+  .single-pro-image,
+  .single-pro-details {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .small-img-group {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 576px) {
+  .navbar {
+    padding: 10px;
+  }
+
+  .logo {
+    max-width: 70px;
+  }
+
+  .intro {
+    margin: 20px auto;
+    padding: 15px;
+  }
+
+  .intro h1 {
+    font-size: 24px;
+  }
+
+  .intro p {
+    font-size: 14px;
+  }
+
+  #newsletter {
+    padding: 40px 20px;
+  }
+
+  #newsletter .form {
+    width: 100%;
+  }
+
+  footer {
+    padding: 40px 20px;
+  }
+
+  footer .col {
+    margin-bottom: 30px;
+  }
+}
+
+/* Mobile Menu Toggle */
+.menu-toggle {
+  display: none;
+  cursor: pointer;
+  padding: 10px;
+}
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  nav ul {
+    display: none;
+  }
+
+  nav ul.active {
+    display: flex;
   }
 }
 
